@@ -1,0 +1,17 @@
+Not query
+qs = User.object.filter(~Q(id__lt=5))
+
+AND query
+qs = User.objects.filter(Q(id=5)&Q(id=55))
+
+Union Queryset
+
+qs = Hero.objects.all()values_list('name','gender').union(Villian.objects.all()values_list('name','gender'))
+
+Find rows which have duplicates
+
+
+duplicates = User.objects.values('first_name').annotate(name_count=Count('first_name')).filter(name_count__gt=1)
+
+
+records = 
